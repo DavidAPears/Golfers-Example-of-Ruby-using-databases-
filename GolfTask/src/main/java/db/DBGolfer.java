@@ -28,48 +28,42 @@ public class DBGolfer {
         } finally {
             session.close();
         }
-
-
-        public static List<Golfer> getAll(){
-            List<Golfer> results = null;
-            session = getSessionFactory().openSession();
-
-            try {
-                Criteria cr = session.createCriteria(Golfer.class);
-                results = cr.list();
-            } catch (HibernateException e) {
-                e.printStackTrace();
-            } finally {
-                session.close();
-            }
-            return results;
-        }
-
-
-        public static Golfer find(int id){
-            Golfer result = null;
-            session = getSessionFactory().openSession();
-
-            try {
-                Criteria cr = session.createCriteria(Golfer.class);
-                cr.add(Restrictions.eq("id", id));
-                result = (Golfer) cr.uniqueResult();
-
-            } catch (HibernateException e) {
-                e.printStackTrace();
-
-            } finally {
-                session.close();
-            }
-
-            return result;
-        }
     }
 
-    public static Golfer find(int id) {
+    public static List<Golfer> getAll(){
+        List<Golfer> results = null;
+        session = getSessionFactory().openSession();
+
+        try {
+            Criteria cr = session.createCriteria(Golfer.class);
+            results = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
     }
 
 
+    public static Golfer find(int id){
+        Golfer result = null;
+        session = getSessionFactory().openSession();
+
+        try {
+            Criteria cr = session.createCriteria(Golfer.class);
+            cr.add(Restrictions.eq("id", id));
+            result = (Golfer) cr.uniqueResult();
+
+        } catch (HibernateException e) {
+            e.printStackTrace();
+
+        } finally {
+            session.close();
+        }
+
+        return result;
+    }
 }
 
 

@@ -28,7 +28,7 @@ public class Runner {
 
         List<Golfer> golfers = DBGolfer.getAll();
 
-        Golfer davey = DBGolfer.find(golfer5.getId());
+        Golfer jack = DBGolfer.find(golfer5.getId());
 
         System.out.println(jack.getFirstName());
 
