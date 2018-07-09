@@ -1,4 +1,3 @@
-import java.util.List;
 
 import db.DBGolfer;
 import models.Golfer;
@@ -27,11 +26,9 @@ public class Runner {
 
 
 
-//        This query will return ALL pirates in an Array of pirates:
-
         List<Golfer> golfers = DBGolfer.getAll();
 
-        Golfer davey = DBGolfer.find(pirate5.getId());
+        Golfer davey = DBGolfer.find(golfer5.getId());
 
         System.out.println(jack.getFirstName());
 

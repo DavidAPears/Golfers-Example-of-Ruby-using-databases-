@@ -1,10 +1,15 @@
 package db;
 
 import models.Golfer;
-import org.hibernate.*;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
+
+import static db.HibernateUtil.getSessionFactory;
 
 public class DBGolfer {
 
@@ -12,7 +17,7 @@ public class DBGolfer {
     private static Transaction transaction;
 
     public static void save(Golfer golfer) {
-        session = HibernateUtil.getSessionFactory().openSession();
+        session = getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
             session.save(golfer);
@@ -26,9 +31,8 @@ public class DBGolfer {
 
 
         public static List<Golfer> getAll(){
-
             List<Golfer> results = null;
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = getSessionFactory().openSession();
 
             try {
                 Criteria cr = session.createCriteria(Golfer.class);
@@ -42,9 +46,9 @@ public class DBGolfer {
         }
 
 
-        public static Golfer find ( int id){
+        public static Golfer find(int id){
             Golfer result = null;
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = getSessionFactory().openSession();
 
             try {
                 Criteria cr = session.createCriteria(Golfer.class);
@@ -62,9 +66,12 @@ public class DBGolfer {
         }
     }
 
-    public static List<Golfer> getAll() {
+    public static Golfer find(int id) {
     }
+
+
 }
+
 
 
 
